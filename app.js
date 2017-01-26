@@ -7,7 +7,7 @@ var router = require('./routes');
 var config = require('./config');
 
 // Database connection
-mongoose.connect(config.mongo.generateConnStr());
+mongoose.connect(config.db.genConnStr());
 
 // Body parser
 app.use(bodyParser.urlencoded({ extended: true }));
