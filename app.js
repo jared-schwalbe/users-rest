@@ -4,9 +4,10 @@ var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var router = require('./routes');
+var config = require('./config');
 
 // Database connection
-mongoose.connect('mongodb://localhost/users-db');
+mongoose.connect(config.mongo.generateConnStr());
 
 // Body parser
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,4 +17,4 @@ app.use(bodyParser.json());
 app.use('/api', router(app, express));
 
 // Start server
-app.listen(3000);
+app.listen(config.port);
