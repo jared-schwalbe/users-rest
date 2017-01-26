@@ -18,10 +18,7 @@ switch (process.env.NODE_ENV) {
 // ==============================================
 // Helper function to build connection string for mongoose
 module.exports.db.genConnStr = function() {
-  return 'mongodb://'
-    + (this.username && this.password
-      ? this.username + ':' + this.password + '@' : '')
-    + this.host
-    + (this.port ? ':' + this.port : '')
-    + '/' + this.database;
+  return 'mongodb://' + (this.username && this.password ? this.username + ':' +
+    this.password + '@' : '') + this.host + (this.port ? ':' + this.port :
+    '') + '/' + this.database;
 }
