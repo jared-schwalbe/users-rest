@@ -1,6 +1,8 @@
+// Dependencies
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 
+// Define a schema for User
 var userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -24,6 +26,7 @@ var userSchema = new mongoose.Schema({
   timestamps: true
 });
 
+// Before saving, salt the password
 userSchema.pre('save', function(next) {
   const SALT_FACTOR = 10;
   var user = this;
@@ -42,6 +45,7 @@ userSchema.pre('save', function(next) {
   }
 });
 
+// Use this to check plain text password is a match to the hashed one
 userSchema.methods.comparePassword = function(passw, cb) {
   bcrypt.compare(passw, this.password, function(err, isMatch) {
     if (err) return cb(err);

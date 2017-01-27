@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
-var morgan = require('morgan');
+var logger = require('morgan');
 var router = require('./routes');
 var config = require('./config');
 
@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Log requests to console
-app.use(morgan('dev'));
+app.use(logger('dev'));
 
 // Add routes
 router(app);

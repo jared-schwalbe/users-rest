@@ -5,7 +5,7 @@ module.exports = {
     username: '',
     password: '',
     port: '',
-    database: 'users-db',
-    secret: 'example-secret'
-  }
+    database: 'users-db'
+  },
+  secret: 'shhh.its.a.secret'
 }

@@ -14,14 +14,15 @@ module.exports.create = function(req, res) {
   });
 }
 
-module.exports.select = function(req, res) {
+module.exports.get = function(req, res) {
   User.findById(req.params.id, function(err, user) {
     if (err) return res.send(err);
     res.json(user);
   });
 }
 
-module.exports.selectAll = function(req, res) {
+module.exports.getAll = function(req, res) {
+  console.log('hit');
   User.find(function(err, users) {
     if (err) return res.send(err);
     res.json(users);
