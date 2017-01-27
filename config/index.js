@@ -1,4 +1,3 @@
 module.exports = {
-  env: require('./env'),
-  passport: require('./passport')
+  env: require('./env')
 }
