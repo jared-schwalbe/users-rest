@@ -9,36 +9,35 @@ module.exports.create = function(req, res) {
   });
 
   user.save(function(err) {
-    if (err) res.send(err);
+    if (err) return res.send(err);
     res.send('Success');
   });
 }
 
 module.exports.select = function(req, res) {
   User.findById(req.params.id, function(err, user) {
-    if (err) res.send(err);
+    if (err) return res.send(err);
     res.json(user);
   });
 }
 
 module.exports.selectAll = function(req, res) {
   User.find(function(err, users) {
-    if (err) res.send(err);
+    if (err) return res.send(err);
     res.json(users);
   });
 }
 
 module.exports.update = function(req, res) {
   User.findById(req.params.id, function(err, user) {
-    if (err) res.send(err);
+    if (err) return res.send(err);
     if (req.body.name) user.name = req.body.name;
     if (req.body.email) user.email = req.body.email;
     if (req.body.username) user.username = req.body.username;
     if (req.body.password) user.password = req.body.password;
-    user.updatedAt = Date.now();
 
     user.save(function(err) {
-      if (err) res.send(err);
+      if (err) return res.send(err);
       res.send('Success');
     });
   });
@@ -46,7 +45,7 @@ module.exports.update = function(req, res) {
 
 module.exports.delete = function(req, res) {
   User.remove({ _id: req.params.id }, function(err, user) {
-    if (err) res.send(err);
+    if (err) return res.send(err);
     res.send('Success');
   });
 }

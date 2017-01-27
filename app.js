@@ -21,7 +21,6 @@ app.use(morgan('dev'));
 
 // Passport
 app.use(passport.initialize());
-config.passport(passport);
 
 // Add routes
 router(app);
