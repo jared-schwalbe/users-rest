@@ -1,6 +1,6 @@
 var User = require('../models/user');
 
-exports.create = function(req, res) {
+module.exports.create = function(req, res) {
   var user = new User({
     name: req.body.name,
     username: req.body.username,
@@ -15,21 +15,21 @@ exports.create = function(req, res) {
   });
 }
 
-exports.select = function(req, res) {
+module.exports.select = function(req, res) {
   User.findById(req.params.id, function(err, user) {
     if (err) res.send(err);
     res.json(user);
   });
 }
 
-exports.selectAll = function(req, res) {
+module.exports.selectAll = function(req, res) {
   User.find(function(err, users) {
     if (err) res.send(err);
     res.json(users);
   });
 }
 
-exports.update = function(req, res) {
+module.exports.update = function(req, res) {
   User.findById(req.params.id, function(err, user) {
     if (err) res.send(err);
     if (req.body.name) user.name = req.body.name;
@@ -44,7 +44,7 @@ exports.update = function(req, res) {
   });
 }
 
-exports.delete = function(req, res) {
+module.exports.delete = function(req, res) {
   User.remove({ _id: req.params.id }, function(err, user) {
     if (err) res.send(err);
     res.send('Success');

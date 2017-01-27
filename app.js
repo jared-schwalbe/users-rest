@@ -6,24 +6,27 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var passport = require('passport');
 var router = require('./routes');
-var config = require('./config/envs');
+var config = require('./config');
 
 // Database connection
 mongoose.Promise = global.Promise; // Get rid of warning (use bluebird in prod)
-mongoose.connect(config.db.genConnStr());
+mongoose.connect(config.env.db.genConnStr());
 
-// Body parser
+// Use body-parser to get POST requests for API use
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Log to console
+// Log requests to console
 app.use(morgan('dev'));
 
-// Initialize passport
+// Passport
 app.use(passport.initialize());
+config.passport(passport);
 
-// Routes
-app.use('/api', router(app, express));
+// Add routes
+router(app);
 
 // Start server
-app.listen(config.port);
+app.listen(config.env.port, function() {
+  console.log('Server started on port ' + config.env.port);
+});
