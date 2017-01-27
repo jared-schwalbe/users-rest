@@ -8,7 +8,8 @@ var userSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    lowercase: true
+    lowercase: true,
+    required: true
   },
   username: {
     type: String,
