@@ -1,5 +1,5 @@
 module.exports = {
-  port: process.env.PORT,
+  port: 443,
   db: {
     host: process.env.DB_HOST,
     username: process.env.DB_USER,
@@ -7,5 +7,6 @@ module.exports = {
     port: process.env.DB_PORT,
     name: process.env.DB_NAME,
     secret: process.env.DB_SECRET
-  }
+  },
+  secret: process.env.SECRET
 }

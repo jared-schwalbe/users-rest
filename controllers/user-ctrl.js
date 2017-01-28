@@ -22,7 +22,6 @@ module.exports.get = function(req, res) {
 }
 
 module.exports.getAll = function(req, res) {
-  console.log('hit');
   User.find(function(err, users) {
     if (err) return res.send(err);
     res.json(users);
